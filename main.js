@@ -97,6 +97,19 @@ function gameStart(){
 
 	container.append(logo);
 
+	let navBar = document.createElement('div');
+	navBar.className = 'nav_bar';
+		let giveUpBtn = document.createElement('button');
+		giveUpBtn.id = 'giveUpBtn';
+		giveUpBtn.innerText = 'Arrenditi';
+		giveUpBtn.addEventListener("click", function quitClick(event) {
+			if(gameFin == 0){
+				notification.innerText = 'La parola era ' + chosenWord + '. Invio per giocare di nuovo';
+				gameOver();
+			}
+		});
+	navBar.append(giveUpBtn);
+	container.append(navBar);
 
 	let gameArea = document.createElement('div');
 	gameArea.className = 'game_area';
@@ -162,20 +175,6 @@ function gameStart(){
 		keyboard.append(botKeys);
 
 	container.append(keyboard);
-
-    let navBar = document.createElement('div');
-	navBar.className = 'nav_bar';
-		let giveUpBtn = document.createElement('button');
-		giveUpBtn.id = 'giveUpBtn';
-		giveUpBtn.innerText = 'Arrenditi';
-		giveUpBtn.addEventListener("click", function quitClick(event) {
-			if(gameFin == 0){
-				notification.innerText = 'La parola era ' + chosenWord + '. Invio per giocare di nuovo';
-				gameOver();
-			}
-		});
-	navBar.append(giveUpBtn);
-	container.append(navBar);
 
 	let alphabet = 'abcdefghijklmnopqrstuvwxyz';
 	document.addEventListener('keyup', keyPress = function(event) {
