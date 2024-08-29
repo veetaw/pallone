@@ -97,20 +97,6 @@ function gameStart(){
 
 	container.append(logo);
 
-	let navBar = document.createElement('div');
-	navBar.className = 'nav_bar';
-		let giveUpBtn = document.createElement('button');
-		giveUpBtn.id = 'giveUpBtn';
-		giveUpBtn.innerText = 'Arrenditi';
-		giveUpBtn.addEventListener("click", function quitClick(event) {
-			if(gameFin == 0){
-				notification.innerText = 'La parola era ' + chosenWord + '. Invio per giocare di nuovo';
-				gameOver();
-			}
-		});
-	navBar.append(giveUpBtn);
-	container.append(navBar);
-
 	let gameArea = document.createElement('div');
 	gameArea.className = 'game_area';
 	for(i = 0; i < 6; i++){
@@ -171,9 +157,22 @@ function gameStart(){
 				submitWord(wordRow);
 			}
 		});
-		botKeys.append(enterKey);
-		keyboard.append(botKeys);
-
+    botKeys.append(enterKey);
+    keyboard.append(botKeys);
+    let navBar = document.createElement('div');
+    navBar.className = 'nav_bar';
+        let giveUpBtn = document.createElement('button');
+        giveUpBtn.id = 'giveUpBtn';
+        giveUpBtn.innerText = 'Arrenditi';
+        giveUpBtn.addEventListener("click", function quitClick(event) {
+            if(gameFin == 0){
+                notification.innerText = 'La parola era ' + chosenWord + '. Invio per giocare di nuovo';
+                gameOver();
+            }
+        });
+    navBar.append(giveUpBtn);
+    container.append(navBar);
+    
 	container.append(keyboard);
 
 	let alphabet = 'abcdefghijklmnopqrstuvwxyz';
